@@ -2,7 +2,7 @@ import Container from "@/componentes/container";
 import { GameProps } from "@/utils/types/games";
 import Image from "next/image";
 import Link from "next/link";
-import { BsArrowBarRightSquare } from "react-icons/bs";
+import { BsArrowRightSquare } from "react-icons/bs";
 
 async function getDalyGame() {
   try {
@@ -26,7 +26,7 @@ export default async function Home() {
             <div className="w-full bg-back rounded-lg">
               <div className="absolute z-20 bottom-0 p-3 flex justify-center items-center gap-2">
                 <p className="font-bold text-xl text-white">{daylyGame.title}</p>
-                <BsArrowBarRightSquare size={24} color="#fff" />
+                <BsArrowRightSquare size={24} color="#fff" />
               </div>
               <Image
                 src={daylyGame.image_url}
