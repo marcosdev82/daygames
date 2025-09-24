@@ -1,4 +1,4 @@
-import logoImg from '../../../public/logo.svg'
+// import logoImg from '../../../public/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LiaGamepadSolid } from 'react-icons/lia'
@@ -10,11 +10,14 @@ export function Header() {
                 <nav className='flex justify-center items-center gap-4'>
                     <Link href="/">
                         <Image
-                            src={logoImg}
-                            alt='Logo do site dalygames'
+                            src="/logo.svg"
+                            alt="Logo do site dalygames"
+                            width={150}   // ajuste conforme tamanho do seu logo
+                            height={50}   // ajuste conforme tamanho do seu logo
                             quality={100}
-                            priority={true}
+                            priority
                         />
+
                     </Link>
                     <Link href="/">
                         Games
