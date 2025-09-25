@@ -3,6 +3,7 @@ import { GameProps } from "@/utils/types/games";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRightSquare } from "react-icons/bs";
+import { Input } from "@/componentes/input";
 
 async function getDalyGame() {
   try {
@@ -23,7 +24,7 @@ export default async function Home() {
         <h1 className="text-center font-bold text-xl text-black mt-8 mb-5">Separamos um jogo exclusivo pra você</h1>
         <Link href={`/game/${daylyGame.id}`}>
           <section className="w-full bg-black rounded-lg">
-            <div className="w-full bg-back rounded-lg">
+            <div className="w-full bg-back rounded-lg max-h-96 h-96 relative">
               <div className="absolute z-20 bottom-0 p-3 flex justify-center items-center gap-2">
                 <p className="font-bold text-xl text-white">{daylyGame.title}</p>
                 <BsArrowRightSquare size={24} color="#fff" />
@@ -40,6 +41,7 @@ export default async function Home() {
             </div>
           </section>
         </Link>
+        <Input />
       </Container>
     </main >
   );
