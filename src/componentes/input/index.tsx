@@ -20,7 +20,7 @@ export function Input() {
     return (
         <form
             onSubmit={handleSearch}
-            className="w-full bg-slate-200 my-5 flex gap-2 items-center justify-between rounded-ls p-2"
+            className="w-full bg-slate-200 my-5 text-black flex gap-2 items-center justify-between rounded-ls p-2"
         >
             <input
                 className="bg-slate-200 outline-none w-11/12"
@@ -29,7 +29,7 @@ export function Input() {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
             />
-            <button type="submit">
+            <button type="submit" className="cursor-pointer">
                 <FiSearch size={24} color="#ea580c" />
             </button>
         </form>
