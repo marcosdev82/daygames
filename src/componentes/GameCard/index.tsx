@@ -12,14 +12,17 @@ export default function GameCard({ data }: GameCardProps) {
         <Link href={`/game/${data.id}`}>
             <section className="full bg-slate-200 rounded-lg p-4 mb-5">
                 <div className="relative w-full h-56 transition-all duration-300">
-                    <Image
-                        className="rounded-lg"
-                        src={data.image_url}
-                        alt={data.title}
-                        fill={true}
-                        quality={100}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px)44vw"
-                    />
+                    <div className="relative w-full h-64">
+                        <Image
+                            className="rounded-lg object-cover"
+                            src={data.image_url}
+                            alt={data.title}
+                            fill
+                            quality={100}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 44vw"
+                        />
+                    </div>
+
                 </div>
                 <div className="flex items-center mt-4 justify-between">
                     <p className="text-sm font-bold px-2 text-black text-ellipsis 
