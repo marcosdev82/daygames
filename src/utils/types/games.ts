@@ -5,5 +5,5 @@ export interface GameProps {
     image_url: string;
     platforms: string[];
     categories: string[];
-    realease: string;
+    release: string;
 }

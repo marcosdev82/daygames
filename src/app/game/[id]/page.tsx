@@ -4,6 +4,42 @@ import { redirect } from "next/navigation"
 import Image from "next/image"
 import { Label } from "./components/label"
 import GameCard from "@/componentes/GameCard"
+import next, { Metadata } from "next"
+
+interface PropsParams {
+    params: {
+        id: string
+    }
+}
+
+export async function generateMetadata({ params }: PropsParams): Promise<Metadata> {
+
+    try {
+        const response: GameProps = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`,
+            { next: { revalidate: 60 } })
+            .then(res => res.json())
+            .catch(() => {
+                return {
+                    title: "Daly Games - descubra jogos incríveis para se divertir."
+                }
+            })
+
+        return {
+            title: response.title,
+            description: `${response.description.slice(0, 100)}...`,
+            openGraph: {
+                title: response.title,
+                images: [response.image_url],
+            }
+
+        }
+
+    } catch (err) {
+        return {
+            title: "Daly Games - descubra jogos incríveis para se divertir."
+        }
+    }
+}
 
 async function getData(id: string) {
     try {
@@ -29,6 +65,7 @@ export default async function Game(props: {
     const { id } = await props.params
     const data: GameProps = await getData(id)
     const sortedGames: GameProps = await getGameSorted();
+    console.log(data);
 
     if (!data) {
         redirect('/')
@@ -65,7 +102,7 @@ export default async function Game(props: {
                     ))}
                 </div>
 
-                <p className="mt-7 mb-2">Data de lançamento: {data.realease}</p>
+                <p className="mt-7 mb-2">Data de lançamento: {data.release}</p>
 
                 <h2 className="font-bold text-lg mt-7 mb-2">Jogos recomenddos:</h2>
                 <div className="flex gap-2">
